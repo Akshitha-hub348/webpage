@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Smart Traffic Management</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Premium Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+    <div class="logo">AI Traffic</div>
+    <nav>
+        <a href="#">Home</a>
+        <a href="display.html">About / Learn More</a>
+        <a href="#">Contact</a>
+    </nav>
+</header>
+
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>AI Smart Traffic Management</h1>
+            <p>Detecting Emergency Vehicles & Clearing Traffic Automatically</p>
+            <a href="#" class="btn">Learn More</a>
+        </div>
+    </section>
+
+    <!-- CITY SELECTION SECTION -->
+    <section class="city-section">
+        <div class="city-box">
+            <h2>Emergency Vehicle Location</h2>
+            <p>Select the city where the emergency vehicle is located.</p>
+
+            <form id="cityForm">
+                <select id="citySelect" required>
+                    <option value="">-- Select City --</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="Chennai">Chennai</option>
+                </select>
+
+                <button type="submit" class="btn">Activate AI Control</button>
+            </form>
+
+            <p id="cityOutput" class="output-message"></p>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="section">
+        <div class="text">
+            <h2>About Our System</h2>
+            <p>
+                Our AI-powered traffic control system detects ambulances 
+                and fire trucks in real time using computer vision.
+                It automatically clears signals and updates live traffic.
+            </p>
+        </div>
+        <div class="image">
+            <img src="https://static.toiimg.com/thumb/msid-54910543,width-1280,height-720,resizemode-72/54910543.jpg" alt="AI Technology">
+        </div>
+    </section>
+
+    <!-- PROBLEM SECTION -->
+    <section class="section reverse">
+        <div class="text">
+            <h2>Problem We Solve</h2>
+            <p>
+                Emergency vehicles often get stuck in traffic.
+                Fixed signal systems delay life-saving services.
+            </p>
+        </div>
+        <div class="image">
+            <img src="traffic.jpeg" alt="Traffic">
+        </div>
+    </section>
+
+    <!-- SOLUTION SECTION -->
+    <section class="section">
+        <div class="text">
+            <h2>Our Smart Solution</h2>
+            <ul>
+                <li>AI Camera Detection</li>
+                <li>Automatic Signal Control</li>
+                <li>Live Traffic Monitoring</li>
+                <li>Navigation App Integration</li>
+            </ul>
+        </div>
+        <div class="image">
+            <img src="https://img.freepik.com/premium-photo/futuristic-autonomous-ambulances-with-ai-navigation-ambulance-navigating-city-streets-autonomously-guided-by-ai-reach-emergencies-quickly_1230253-24159.jpg" alt="Ambulance">
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        © 2026 AI Smart Traffic System | Designed by You
+    </footer>
+
+    <!-- CITY SELECTION SCRIPT -->
+    <script>
+        document.getElementById("cityForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const city = document.getElementById("citySelect").value;
+            const output = document.getElementById("cityOutput");
+
+            if(city){
+                output.innerHTML = "🚑 AI Traffic Clearance Activated in <strong>" + city + "</strong>";
+                output.style.opacity = "1";
+            }
+        });
+    </script>
+
+</body>
+</html>
+
+
