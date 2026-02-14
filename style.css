@@ -1,0 +1,283 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #eef2f3, #dfe9f3);
+    color: #1a1a1a;
+}
+
+/* NAVBAR */
+.navbar {
+    position: fixed;
+    width: 100%;
+    padding: 20px 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(10px);
+    color: white;
+    z-index: 1000;
+}
+
+.navbar .logo {
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+.navbar nav a {
+    color: white;
+    margin-left: 25px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.navbar nav a:hover {
+    color: #00c3ff;
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    background: url("https://lyt.ai/wp-content/uploads/2022/10/heavy-traffic-2022-11-01-09-26-41-utc-scaled.jpg") no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    color: white;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(0,0,0,0.85), rgba(0,195,255,0.6));
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    animation: fadeUp 1.5s ease forwards;
+}
+
+.hero h1 {
+    font-size: 55px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 20px;
+}
+
+/* BUTTON */
+.btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 14px 35px;
+    border-radius: 50px;
+    background: linear-gradient(45deg, #00c3ff, #0077aa);
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.4s;
+    box-shadow: 0 10px 25px rgba(0,195,255,0.4);
+}
+
+.btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,195,255,0.6);
+}
+
+/* CITY SECTION */
+.city-section {
+    padding: 100px 10%;
+    display: flex;
+    justify-content: center;
+}
+
+.city-box {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    padding: 50px;
+    border-radius: 25px;
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    animation: fadeUp 1.5s ease forwards;
+}
+
+.city-box h2 {
+    font-size: 30px;
+    margin-bottom: 15px;
+    color: #0a3d62;
+}
+
+.city-box p {
+    margin-bottom: 25px;
+    font-size: 16px;
+}
+
+/* DROPDOWN */
+.city-box select {
+    width: 100%;
+    padding: 15px;
+    border-radius: 50px;
+    border: none;
+    font-size: 16px;
+    margin-bottom: 20px;
+    outline: none;
+    background: #f0f8ff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* OUTPUT MESSAGE */
+.output-message {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #0077aa;
+    opacity: 0;
+    transition: 0.5s ease;
+}
+
+/* SECTIONS */
+.section {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    padding: 100px 10%;
+    margin: 60px 5%;
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(15px);
+    border-radius: 25px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.section.reverse {
+    flex-direction: row-reverse;
+}
+
+.section .text {
+    flex: 1;
+}
+
+.section .image {
+    flex: 1;
+}
+
+.section img {
+    width: 100%;
+    border-radius: 20px;
+    transition: 0.5s;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+.section img:hover {
+    transform: scale(1.05);
+}
+
+.section h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #0a3d62;
+}
+
+.section p,
+.section li {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* FOOTER */
+footer {
+    background: #0f172a;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    margin-top: 50px;
+}
+
+/* ANIMATION */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 35px;
+    }
+}
+/* DISPLAY / ABOUT PAGE */
+.display-section {
+    padding: 120px 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.display-box {
+    max-width: 800px;
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(15px);
+    padding: 50px;
+    border-radius: 25px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    text-align: center;
+    animation: fadeUp 1.5s ease forwards;
+}
+
+.display-box h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: #0a3d62;
+}
+
+.display-box h2 {
+    font-size: 28px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: #0077aa;
+}
+
+.display-box p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.display-box ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    text-align: left;
+}
+
+.display-box ul li {
+    margin-bottom: 10px;
+    font-size: 17px;
+}
+
+
+
+
