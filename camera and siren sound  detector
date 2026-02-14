@@ -1,0 +1,100 @@
+import sounddevice as sd
+import numpy as np
+import cv2
+from ultralytics import YOLO
+import time
+
+roads = ["Road A", "Road B", "Road C", "Road D"]
+current_green = "Road A"
+audio_duration = 5
+sample_rate = 44100
+AUDIO_THRESHOLD = 50
+FRAME_THRESHOLD = 3  # consecutive frames to show vehicle
+
+
+def show_signals(active_road):
+    print("\n🚦 Traffic Signal Status:")
+    for road in roads:
+        if road == active_road:
+            print(f"{road} → GREEN")
+        else:
+            print(f"{road} → RED")
+
+def detect_siren():
+    print("\n🎤 Listening for siren (audio)... Play siren sound near mic!")
+    audio = sd.rec(int(audio_duration * sample_rate),
+        samplerate=sample_rate,
+        channels=1)
+    sd.wait()
+    audio = audio.flatten()
+
+    fft = np.fft.fft(audio)
+    freqs = np.fft.fftfreq(len(fft), 1/sample_rate)
+    mag = np.abs(fft)
+
+    positive_freqs = freqs[:len(freqs)//2]
+    positive_mag = mag[:len(mag)//2]
+
+    siren_band = (positive_freqs > 700) & (positive_freqs < 1600)
+    band_energy = np.mean(positive_mag[siren_band])
+
+    print("Siren Band Energy:", band_energy)
+    return band_energy > AUDIO_THRESHOLD
+
+def detect_vehicle_visual():
+    print("\n🎥 Camera checking for vehicles (visual demo)...")
+    model = YOLO("yolov8n.pt")
+    cap = cv2.VideoCapture(0)
+    if not cap.isOpened():
+        print("❌ Cannot open camera")
+        return
+
+    detected_frames = 0
+    frame_count = 0
+    MAX_FRAMES = 50  # demo
+
+    while frame_count < MAX_FRAMES:
+        ret, frame = cap.read()
+        if not ret:
+            break
+
+        results = model(frame)
+        for result in results:
+            for box in result.boxes:
+                conf = box.conf[0]
+                label = model.names[int(box.cls)]
+                # For demo, show bounding box for car/truck/bus
+                if label in ["car", "truck", "bus"] and conf > 0.5:
+                    detected_frames += 1
+                    x1, y1, x2, y2 = map(int, box.xyxy[0])
+                    cv2.rectangle(frame, (x1, y1), (x2, y2), (0,0,255), 2)
+                    cv2.putText(frame, f"{label} {conf:.2f}", (x1, y1-10),
+                                cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0,0,255), 2)
+
+        cv2.imshow("Camera Feed - Press Q to quit", frame)
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+        frame_count += 1
+
+    cap.release()
+    cv2.destroyAllWindows()
+
+print("\n==== LifeLine AI Smart Traffic System Demo ====")
+show_signals(current_green)
+
+# Step 1: Detect audio siren
+audio_emergency = detect_siren()
+
+# Step 2: Show camera feed for visual demo (optional)
+detect_vehicle_visual()
+
+# Step 3: Traffic signal decision (only audio triggers emergency)
+if audio_emergency:
+    detected_road = "Road A"  # audio detected road
+    print("\n🚑 EMERGENCY VEHICLE DETECTED!")
+    show_signals(detected_road)
+    time.sleep(5)
+    print("\n🔁 Returning to normal traffic mode...")
+    show_signals(current_green)
+else:
+    print("\nNo Emergency Detected. Traffic continues normally.")
