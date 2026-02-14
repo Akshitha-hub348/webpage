@@ -1,0 +1,162 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #050a18;
+    color: white;
+    text-align: center;
+}
+
+header {
+    padding: 20px;
+    background: #0b1533;
+    border-bottom: 2px solid #00ff99;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 40px;
+    color: #00ff99;
+}
+
+header p {
+    margin-top: 8px;
+    color: #cfcfcf;
+}
+
+.main-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.panel {
+    background: #0d1730;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0px 0px 15px rgba(0, 255, 150, 0.25);
+}
+
+.panel h2 {
+    margin-top: 0;
+    color: #00ff99;
+}
+
+.camera-panel {
+    grid-column: span 2;
+}
+
+.camera-feed {
+    width: 100%;
+    border-radius: 12px;
+    border: 2px solid rgba(0,255,150,0.3);
+}
+
+select {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+button {
+    padding: 12px 18px;
+    margin: 12px;
+    border: none;
+    border-radius: 10px;
+    background: #00ff99;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #00cc77;
+}
+
+.danger {
+    background: #ff4d4d;
+}
+
+.danger:hover {
+    background: #cc0000;
+}
+
+.highlight {
+    font-size: 18px;
+    margin: 5px;
+    color: #ffdd57;
+}
+
+.ambulance-text {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ff4d4d;
+}
+
+.density-card, .signal-card {
+    background: #121f3f;
+    padding: 12px;
+    border-radius: 10px;
+    margin: 10px 0;
+    text-align: left;
+}
+
+.progress {
+    height: 12px;
+    background: #333;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.progress-bar {
+    height: 12px;
+    background: #00ff99;
+    width: 0%;
+}
+
+/* 🚦 TRAFFIC LIGHT ANIMATION */
+.traffic-light {
+    margin: 20px auto;
+    width: 80px;
+    background: #111;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px rgba(255,255,255,0.2);
+}
+
+.light {
+    width: 50px;
+    height: 50px;
+    margin: 10px auto;
+    border-radius: 50%;
+    opacity: 0.2;
+    transition: 0.5s;
+}
+
+.red {
+    background: red;
+}
+
+.yellow {
+    background: yellow;
+}
+
+.green {
+    background: limegreen;
+}
+
+.active {
+    opacity: 1;
+    box-shadow: 0px 0px 15px white;
+}
+
+footer {
+    padding: 10px;
+    background: #0b1533;
+    color: #aaa;
+    margin-top: 20px;
+}

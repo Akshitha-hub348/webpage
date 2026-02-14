@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FlowGrid Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <h1>🚦 FlowGrid - AI Traffic Rescue</h1>
+        <p>Smart Adaptive Signals + Ambulance Green Corridor</p>
+    </header>
+    <h2>📍 Live Ambulance GPS Tracking</h2>
+    <div id="map" style="height: 400px; width: 100%; border-radius: 10px;"></div>
+
+
+    <div class="main-grid">
+
+        <!-- Live Camera -->
+        <div class="panel camera-panel">
+            <h2>📷 Live Traffic Feed</h2>
+            <img src="/video_feed" class="camera-feed">
+        </div>
+
+        <!-- Vehicle Density -->
+        <div class="panel">
+            <h2>📊 Vehicle Density</h2>
+            <div id="densityCards"></div>
+        </div>
+
+        <!-- Signal Status + Animation -->
+        <div class="panel">
+            <h2>🚥 Signal Status</h2>
+            <div id="signalCards"></div>
+
+            <h3>Traffic Light Animation</h3>
+            <div class="traffic-light">
+                <div id="redLight" class="light red"></div>
+                <div id="yellowLight" class="light yellow"></div>
+                <div id="greenLight" class="light green"></div>
+            </div>
+
+            <p id="currentLane" class="highlight"></p>
+            <p id="greenTime" class="highlight"></p>
+        </div>
+
+        <!-- Chart -->
+        <div class="panel">
+            <h2>📈 Traffic Density Chart</h2>
+            <canvas id="trafficChart" width="300" height="200"></canvas>
+        </div>
+
+        <!-- Ambulance Control -->
+        <div class="panel">
+            <h2>🚑 Emergency Control</h2>
+
+            <label>Select Lane:</label>
+            <select id="laneSelect">
+                <option value="Lane A">Lane A</option>
+                <option value="Lane B">Lane B</option>
+                <option value="Lane C">Lane C</option>
+                <option value="Lane D">Lane D</option>
+            </select>
+            <p id="selectedLaneText" style="color:cyan; font-weight:bold;">
+    Selected Lane: Lane A
+</p>
+
+<p id="ambulanceStatus" class="ambulance-text"></p>
+
+
+            <button onclick="enableAmbulance()">🚑 Enable Ambulance Mode</button>
+            <button class="danger" onclick="clearAmbulance()">❌ Clear Ambulance Mode</button>
+
+            <p id="ambulanceStatus" class="ambulance-text"></p>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>FlowGrid | Hackathon Smart City Prototype 🚀</p>
+    </footer>
+
+<script src="/static/script.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FlowGrid Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>🚦 FlowGrid - AI Traffic Rescue</h1>
+        <p>Smart Adaptive Signals + Ambulance Green Corridor</p>
+    </header>
+
+    <div class="main-grid">
+
+        <!-- Live Camera -->
+        <div class="panel camera-panel">
+            <h2>📷 Live Traffic Feed</h2>
+            <img src="/video_feed" class="camera-feed">
+        </div>
+
+        <!-- Vehicle Density -->
+        <div class="panel">
+            <h2>📊 Vehicle Density</h2>
+            <div id="densityCards"></div>
+        </div>
+
+        <!-- Signal Status + Animation -->
+        <div class="panel">
+            <h2>🚥 Signal Status</h2>
+            <div id="signalCards"></div>
+
+            <h3>Traffic Light Animation</h3>
+            <div class="traffic-light">
+                <div id="redLight" class="light red"></div>
+                <div id="yellowLight" class="light yellow"></div>
+                <div id="greenLight" class="light green"></div>
+            </div>
+
+            <p id="currentLane" class="highlight"></p>
+            <p id="greenTime" class="highlight"></p>
+        </div>
+
+        <!-- Chart -->
+        <div class="panel">
+            <h2>📈 Traffic Density Chart</h2>
+            <canvas id="trafficChart" width="300" height="200"></canvas>
+        </div>
+
+        <!-- Ambulance Control -->
+        <div class="panel">
+            <h2>🚑 Emergency Control</h2>
+
+            <label>Select Lane:</label>
+            <select id="laneSelect">
+                <option value="Lane A">Lane A</option>
+                <option value="Lane B">Lane B</option>
+                <option value="Lane C">Lane C</option>
+                <option value="Lane D">Lane D</option>
+            </select>
+
+            <button onclick="enableAmbulance()">🚑 Enable Ambulance Mode</button>
+            <button class="danger" onclick="clearAmbulance()">❌ Clear Ambulance Mode</button>
+
+            <p id="ambulanceStatus" class="ambulance-text"></p>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>FlowGrid | Hackathon Smart City Prototype 🚀</p>
+    </footer>
+
+<script src="/static/script.js"></script>
+</body>
+</html>
